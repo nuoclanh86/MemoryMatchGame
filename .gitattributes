@@ -1,0 +1,97 @@
+## Unity ##
+*.mat merge=unityyamlmerge eol=lf
+*.anim merge=unityyamlmerge eol=lf
+*.unity merge=unityyamlmerge eol=lf
+*.prefab merge=unityyamlmerge eol=lf
+*.physicsMaterial2D merge=unityyamlmerge eol=lf
+*.physicMaterial merge=unityyamlmerge eol=lf
+*.asset merge=unityyamlmerge eol=lf
+*.meta merge=unityyamlmerge eol=lf
+*.controller merge=unityyamlmerge eol=lf
+*.spriteatlas merge=unityyamlmerge eol=lf
+*.renderTexture merge=unityyamlmerge eol=lf
+/ProjectSettings/GvhProjectSettings.xml text eol=lf
+Assets/Firebase/**/*.dll filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/**/*.mdb filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/**/*.exe filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/**/*.bundle filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/**/*.so filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/**/*.srcaar filter=lfs diff=lfs merge=lfs -text
+Assets/GeneratedLocalRepo/**/*.aar filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/iOS/Firebase/*.a filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/Android/*.aar filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/iOS/**/*.enc filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/iOS/ToyRecognitioniOSSDK.framework/ToyRecognitioniOSSDK filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/iOS/**/*.a filter=lfs diff=lfs merge=lfs -text
+Patches/*.diff filter=lfs diff=lfs merge=lfs -text
+tools/AndroidAppBundleTools/*.jar filter=lfs diff=lfs merge=lfs -text
+Assets/Bakery/*.pdf filter=lfs diff=lfs merge=lfs -text
+Assets/Editor/x64/**/*.dll filter=lfs diff=lfs merge=lfs -text
+Assets/Bakery/**/*.bmp filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/VDE02-A/Animations/VDE02-A_Reward.anim filter=lfs diff=lfs merge=lfs -text
+*.avi filter=lfs diff=lfs merge=lfs -text
+*.mkv filter=lfs diff=lfs merge=lfs -text
+*.webm filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+*.m4v filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.enc filter=lfs diff=lfs merge=lfs -text
+*.tflite filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
+*.dylib filter=lfs diff=lfs merge=lfs -text
+*.dll filter=lfs diff=lfs merge=lfs -text
+*.aar filter=lfs diff=lfs merge=lfs -text
+**/*Letstory*.tga filter=lfs diff=lfs merge=lfs -text
+Assets/Resources/Fonts/NotoSansMonoCJKsc-Regular[[:space:]]SDF-SC.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Resources/Fonts/NotoSansMonoCJKtc-Regular[[:space:]]SDF-SC.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Resources/Fonts/NotoSansMonoCJKtc-Regular[[:space:]]SDF-TC.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Resources/Fonts/NotoSansMonoCJKtc-Regular[[:space:]]SDF-KR.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Kinder[[:space:]]R&D/Toy_Scene/Toy_Atlas.unity filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/iOS/ToyTracking.framework/ToyTracking filter=lfs diff=lfs merge=lfs -text
+Packages/com.easyar.sense/Runtime/Binding/Windows/x86/EasyAR.dll filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/VDE02-A/Animations/VDE02-A_Reward.anim filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/TalkingData/iOS/libTalkingDataSDK.a filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Easter/Resources/EasterMusic/*.wav filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/SingularSDK/iOS/libSingular.a filter=lfs diff=lfs merge=lfs -text
+Packages/**/*.so filter=lfs diff=lfs merge=lfs -text
+Packages/**/*.aar filter=lfs diff=lfs merge=lfs -text
+Packages/**/*.dll filter=lfs diff=lfs merge=lfs -text
+Packages/**/*.dylib filter=lfs diff=lfs merge=lfs -text
+Packages/**/Plugins/iOS/TensorFlowLiteCMetal.framework/TensorFlowLiteCMetal filter=lfs diff=lfs merge=lfs -text
+Packages/**/Plugins/iOS/TensorFlowLiteC.framework/TensorFlowLiteC filter=lfs diff=lfs merge=lfs -text
+Packages/com.easyar.sense/**/easyar.framework/easyar filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/iOS/SensorsAnalyticsSDK.framework/SensorsAnalyticsSDK filter=lfs diff=lfs merge=lfs -text
+Packages/com.easyar.sense/**/easyar.framework/easyar filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/WorldMap/Animations/Animals/VUB02[[:space:]]Idle.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/WorldMap/Animations/Animals/WorldMap_Islands_Eagle_Run_Around.fbx filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/SpecificAssets/Sprites/Applaydu_S4_Poster_Digital_1.png filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/WorldMap/Textures/Portal/Portal_BG_1.jpg filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Audio/Clips/m_world_map_loop.wav filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/VV078D/Animations/VV078D_Excited.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/VT151/Animations/VT151_Excited.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/VT037/Animations/VT037_Excited.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/VT037/Animations/VT037_Idle2.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/VT037/Animations/VT037_Reward.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/_NewToys/EN266C/Animations/EN266C_Idle.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Audio/Clips/EduLand/Ambience/*.wav filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Audio/Clips/EduLand/BGM/*.wav filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Audio/Clips/AvatarHouse/sfx_Avatar_ambience.wav filter=lfs diff=lfs merge=lfs -text
+*.rendertexture text eol=crlf
+Assets/_Game/Models/_NewToys/VT145/Animations/VT145_Excited.anim filter=lfs diff=lfs merge=lfs -text
+Assets/Kinder[[:space:]]R&D/Toy_Scene/Toy_Atlas_Icon.unity filter=lfs diff=lfs merge=lfs -text
+Assets/BakeryLightmaps/Africa[[:space:]]Jungle_Zone[[:space:]]01_dir.tga filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Models/Environments/Jungle/Assets/V4/Prefab/Africa[[:space:]]Jungle_Zone[[:space:]]02.prefab filter=lfs diff=lfs merge=lfs -text
+Assets/BakeryLightmaps/Africa[[:space:]]Jungle_Zone[[:space:]]02_dir.tga filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/WorldMap/Animations/Animals/VUB02_Idle_Low.anim filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Seasonal/**/*.wav filter=lfs diff=lfs merge=lfs -text
+Assets/GooglePlayPlugins/com.google.android.appbundle/Editor/Tools/bundletool-all.jar
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.xlxs filter=lfs diff=lfs merge=lfs -text
+*.doc filter=lfs diff=lfs merge=lfs -text
+*.docx filter=lfs diff=lfs merge=lfs -text
+Assets/_Game/Dialog[[:space:]]System/Addressable/VoiceOvers/**/*.wav filter=lfs diff=lfs merge=lfs -text
+Assets/Extensions/Feel/NiceVibrations/Plugins/iOS/LofeltHaptics.framework/LofeltHaptics filter=lfs diff=lfs merge=lfs -text
+*.ttf filter=lfs diff=lfs merge=lfs -text
+*.otf filter=lfs diff=lfs merge=lfs -text
+*.sdf filter=lfs diff=lfs merge=lfs -text
+
