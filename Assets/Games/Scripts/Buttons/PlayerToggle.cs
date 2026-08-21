@@ -21,4 +21,16 @@ public class PlayerToggle : MonoBehaviour
         isSelected = !isSelected;
         image.color = isSelected ? Color.blue : Color.white;
     }
+
+    public void SetSprite(Sprite newSprite)
+    {
+        if (image != null)
+        {
+            image.sprite = newSprite;
+        }
+        else
+        {
+            Debug.LogError("Image component not found on PlayerToggle GameObject.");
+        }
+    }
 }
