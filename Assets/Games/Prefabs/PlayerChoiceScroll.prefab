@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerTogglePrefab: {fileID: 852321591472927533, guid: b92b2c07742acbe49afe4019dc83b90d, type: 3}
-  ContentPanel: {fileID: 2529785906534590586}
+  contentPanel: {fileID: 3511323091129038435}
   listCard: {fileID: 11400000, guid: 4fb69e223ab07b94e9d5439702444a1e, type: 2}
 --- !u!1 &2529785906534590586
 GameObject:
