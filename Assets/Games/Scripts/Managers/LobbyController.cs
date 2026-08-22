@@ -8,6 +8,8 @@ public class LobbyController : MonoBehaviour
     [SerializeField] private PlayerChoicePreview _playerChoicePreview;
     [SerializeField] Button playButton;
 
+    private readonly int maxPlayers = 4;
+
     void Start()
     {
         if (playButton != null && GameManager.Instance != null)
@@ -16,13 +18,16 @@ public class LobbyController : MonoBehaviour
             Debug.LogError("[LobbyController] Can not find playButton or GameManager instance.");
 
         _playerChoiceScroll.CreatePlayerChoices(this);
+        _playerChoicePreview.UpdatePlayerSumupText();
     }
 
     public void OnPlayerChoiceItemClicked(PlayerItem item)
     {
+
         Transform itemTransform = item.transform;
 
-        if (itemTransform.IsChildOf(_playerChoiceScroll.transform))
+        if (_playerChoicePreview?.GetPlayerCount() < maxPlayers &&
+                itemTransform.IsChildOf(_playerChoiceScroll.transform))
         {
             MoveItem(itemTransform, _playerChoicePreview.GetPlayerPreviewContentTransform());
         }
@@ -30,6 +35,7 @@ public class LobbyController : MonoBehaviour
         {
             MoveItem(itemTransform, _playerChoiceScroll.GetContentPanelTransform());
         }
+        _playerChoicePreview.UpdatePlayerSumupText();
     }
 
     private void MoveItem(Transform item, Transform newParent)

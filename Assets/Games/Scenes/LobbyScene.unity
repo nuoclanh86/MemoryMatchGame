@@ -495,6 +495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerChoicePreview
       objectReference: {fileID: 0}
+    - target: {fileID: 3811235367637449637, guid: 780115c93e3d8b942b44a3631ffbf55e, type: 3}
+      propertyPath: playerSumupText
+      value: 
+      objectReference: {fileID: 3520122821677537069}
     - target: {fileID: 6134761261619934685, guid: 780115c93e3d8b942b44a3631ffbf55e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -591,6 +595,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821b701dde875444582ae30f499e2a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerChoicePreview
+--- !u!114 &3520122821677537069 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8075921623126629273, guid: 780115c93e3d8b942b44a3631ffbf55e, type: 3}
+  m_PrefabInstance: {fileID: 3520122821677537067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &5046900310654400367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -602,6 +617,18 @@ PrefabInstance:
     - target: {fileID: 790789401578778414, guid: b8f5c10f001da8d498f6bea4de56ff5f, type: 3}
       propertyPath: m_Name
       value: PlayerChoiceScroll
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018627127560184112, guid: b8f5c10f001da8d498f6bea4de56ff5f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018627127560184112, guid: b8f5c10f001da8d498f6bea4de56ff5f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018627127560184112, guid: b8f5c10f001da8d498f6bea4de56ff5f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5344135687600643954, guid: b8f5c10f001da8d498f6bea4de56ff5f, type: 3}
       propertyPath: m_Pivot.x

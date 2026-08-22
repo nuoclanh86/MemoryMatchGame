@@ -8,8 +8,6 @@ public class PlayerItem : MonoBehaviour, IPointerClickHandler
     private int _playerIndex;
     private LobbyController _lobbyController;
 
-    private bool isSelected;
-
     public int PlayerIndex
     {
         get { return _playerIndex; }
@@ -27,9 +25,6 @@ public class PlayerItem : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        isSelected = !isSelected;
-        image.color = isSelected ? Color.blue : Color.white;
-
         if (_lobbyController != null)
         {
             _lobbyController.OnPlayerChoiceItemClicked(this);
