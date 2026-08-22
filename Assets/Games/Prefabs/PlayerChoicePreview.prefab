@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerChoicePreview
   playerPreviewContent: {fileID: 389159750775008826}
+  playerSumupText: {fileID: 0}
 --- !u!1 &3359390879357961856
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +406,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 300, y: 400}
-  m_Spacing: {x: 100, y: 100}
+  m_CellSize: {x: 300, y: 300}
+  m_Spacing: {x: 75, y: 75}
   m_Constraint: 1
   m_ConstraintCount: 2
