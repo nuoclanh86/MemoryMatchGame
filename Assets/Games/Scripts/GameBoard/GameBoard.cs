@@ -4,13 +4,14 @@ public class GameBoard : MonoBehaviour
 {
     [SerializeField] private GameObject cellPrefab;
 
-    int _rows = 5;
-    int _columns = 7;
-    int _padding = 5;
-    int _cellSize = -1;
+    private int _padding = 5;
+    private int _cellSize = -1;
 
     void Start()
     {
+        int _rows = GameManager.Instance.PlayerCount * 3;
+        int _columns = GameManager.Instance.PlayerCount * 4;
+
         _cellSize = (int)cellPrefab.GetComponent<RectTransform>().rect.width;
         CreateGameBoard(_rows, _columns, _cellSize + _padding);
     }
@@ -33,6 +34,8 @@ public class GameBoard : MonoBehaviour
                     -row * gameCellSize + offsetY,
                     0
                 );
+
+                cell.GetComponent<GameCell>().InitializeCell(GameManager.Instance.ListCard.sprites[Random.Range(0, GameManager.Instance.ListCard.sprites.Count)]);
             }
         }
     }

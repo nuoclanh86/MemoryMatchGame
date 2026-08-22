@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private ListCardScriptableObject _listCard;
+    public ListCardScriptableObject ListCard => _listCard;
+
     public static GameManager Instance { get; private set; }
 
     public int PlayerCount { get; private set; } = 2;
@@ -27,19 +30,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetPlayerCount(int count)
+    public void StartGame(int playerCount)
     {
-        if (count < 2 || count > 4)
+        if (playerCount < 2 || playerCount > 4)
         {
-            Debug.LogWarning($"[GameManager] Invalid player count: {count}");
+            Debug.Log($"[GameManager] Invalid player count: {playerCount}");
             return;
         }
-
-        PlayerCount = count;
-    }
-
-    public void StartGame()
-    {
+        PlayerCount = playerCount;
         SceneLoader.Instance.LoadGame();
     }
 }

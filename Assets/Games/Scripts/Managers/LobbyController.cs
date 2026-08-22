@@ -13,7 +13,7 @@ public class LobbyController : MonoBehaviour
     void Start()
     {
         if (playButton != null && GameManager.Instance != null)
-            playButton.onClick.AddListener(GameManager.Instance.StartGame);
+            playButton.onClick.AddListener(OnStartGameButtonClicked);
         else
             Debug.LogError("[LobbyController] Can not find playButton or GameManager instance.");
 
@@ -41,5 +41,10 @@ public class LobbyController : MonoBehaviour
     private void MoveItem(Transform item, Transform newParent)
     {
         item.SetParent(newParent, false);
+    }
+
+    private void OnStartGameButtonClicked()
+    {
+        GameManager.Instance.StartGame(_playerChoicePreview?.GetPlayerCount() ?? 0);
     }
 }
