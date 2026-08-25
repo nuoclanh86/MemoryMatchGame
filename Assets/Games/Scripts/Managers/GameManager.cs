@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int playerCount)
     {
-        if (playerCount < 2 || playerCount > 4)
+        if (playerCount < 1 || playerCount > 4)
         {
             Debug.Log($"[GameManager] Invalid player count: {playerCount}");
             return;

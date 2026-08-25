@@ -10,8 +10,9 @@ public class GameBoard : MonoBehaviour
 
     void Start()
     {
-        int _rows = GameManager.Instance.PlayerCount * 3;
-        int _columns = GameManager.Instance.PlayerCount * 4;
+        int _rows = 8;
+        int _columns = 9;
+        Debug.Log($"[GameBoard] Creating game board with {_rows} rows and {_columns} columns.");
 
         _cellSize = (int)cellPrefab.GetComponent<RectTransform>().rect.width;
         CreateGameBoard(_rows, _columns, _cellSize + _padding);
