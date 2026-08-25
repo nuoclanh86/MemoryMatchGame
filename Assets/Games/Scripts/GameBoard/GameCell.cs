@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class GameCell : MonoBehaviour
 {
+    public int GameCell_ID { get; private set; }
+
     private Image image;
     private bool isSelected;
 
@@ -12,8 +14,10 @@ public class GameCell : MonoBehaviour
         image.color = isSelected ? Color.green : Color.white;
     }
 
-    public void InitializeCell(Sprite sprite)
+    public void InitializeCell(int id, Sprite sprite)
     {
+        GameCell_ID = id;
+
         if (image == null)
             image = this.GetComponent<Image>();
 
