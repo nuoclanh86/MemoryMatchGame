@@ -3,10 +3,20 @@ using UnityEngine;
 
 public class GameBoard : MonoBehaviour
 {
+    #region GameBoard Configuration
     [SerializeField] private GameObject cellPrefab;
 
     private int _padding = 5;
     private int _cellSize = -1;
+    #endregion
+
+    #region GameBoard Lifecycle
+
+    private const int NONE_CELL_ID = -1;
+    private int lastChosenCellID = NONE_CELL_ID;
+    List<GameCell> gameCells = new List<GameCell>();
+
+    #endregion
 
     void Start()
     {
@@ -21,13 +31,6 @@ public class GameBoard : MonoBehaviour
     private void CreateGameBoard(int rows, int columns, float gameCellSize)
     {
         int totalCells = rows * columns;
-
-        if (totalCells % 2 != 0)
-        {
-            Debug.LogError("Total number of cells must be even.");
-            return;
-        }
-
         int pairCount = totalCells / 2;
 
         if (GameManager.Instance.ListCard.sprites.Count < pairCount)
@@ -82,9 +85,7 @@ public class GameBoard : MonoBehaviour
         //    Pick different sprite for each ID
         // --------------------------------------------------
 
-        List<Sprite> sprites = new List<Sprite>(
-            GameManager.Instance.ListCard.sprites
-        );
+        List<Sprite> sprites = new List<Sprite>(GameManager.Instance.ListCard.sprites);
 
         // Shuffle sprites
         Shuffle(sprites);
@@ -96,18 +97,13 @@ public class GameBoard : MonoBehaviour
         for (int i = 0; i < totalCells; i++)
         {
             GameObject cell = Instantiate(cellPrefab, transform);
-
             cell.name = $"Cell_{i}";
-
             cell.transform.localPosition = positions[i];
-
             int cellID = ids[i];
-
             Sprite sprite = sprites[cellID];
-
             GameCell gameCell = cell.GetComponent<GameCell>();
-
-            gameCell.InitializeCell(cellID, sprite);
+            gameCell.InitializeCell(cellID, sprite, OnCellSelected);
+            gameCells.Add(gameCell);
         }
     }
 
@@ -120,6 +116,47 @@ public class GameBoard : MonoBehaviour
             T temp = list[i];
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
+        }
+    }
+
+    private void OnCellSelected(int cellID)
+    {
+        if (lastChosenCellID == NONE_CELL_ID)
+        {
+            lastChosenCellID = cellID;
+            Debug.Log($"[GameBoard] First cell selected: {cellID}");
+        }
+        else
+        {
+            Debug.Log($"[GameBoard] Second cell selected: {cellID}");
+            if (lastChosenCellID == cellID)
+            {
+                Debug.Log("[GameBoard] Match found!");
+                // Delete or disable matched cells
+                RemoveCells(lastChosenCellID);
+            }
+            else
+            {
+                Debug.Log("[GameBoard] No match.");
+                // Handle no match logic here
+            }
+            lastChosenCellID = NONE_CELL_ID; // Reset for next selection
+        }
+    }
+
+    private void RemoveCells(int cellID)
+    {
+        int count = 2; // only have 2 cells with the same ID, so we can remove them both
+        for (int i = gameCells.Count - 1; i >= 0; i--)
+        {
+            if (count <= 0) break;
+            if (gameCells[i].GameCell_ID == cellID)
+            {
+                GameCell cell = gameCells[i];
+                gameCells.RemoveAt(i);
+                Destroy(cell.gameObject);
+                count--;
+            }
         }
     }
 }
