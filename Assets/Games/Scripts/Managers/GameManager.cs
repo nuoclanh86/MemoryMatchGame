@@ -1,6 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public static class SceneNames
+{
+    public const string MEMORY_MATCH = "MemoryMatchScene";
+    public const string LOBBY = "LobbyScene";
+    public const string BOOT = "BootScene";
+}
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private ListCardScriptableObject _listCard;
@@ -24,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "BootScene")
+        if (SceneManager.GetActiveScene().name == SceneNames.BOOT)
         {
             SceneLoader.Instance.LoadLobby();
         }
@@ -39,5 +46,13 @@ public class GameManager : MonoBehaviour
         }
         PlayerCount = playerCount;
         SceneLoader.Instance.LoadGame();
+    }
+
+    public void RestartGame()
+    {
+        if (SceneManager.GetActiveScene().name == SceneNames.MEMORY_MATCH)
+        {
+            SceneLoader.Instance.LoadLobby();
+        }
     }
 }

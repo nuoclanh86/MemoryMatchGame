@@ -5,6 +5,7 @@ public class GameBoard : MonoBehaviour
 {
     #region GameBoard Configuration
     [SerializeField] private GameObject cellPrefab;
+    [SerializeField] private PopupPlayerWon popupPlayerWon;
 
     private int _padding = 5;
     private int _cellSize = -1;
@@ -20,12 +21,13 @@ public class GameBoard : MonoBehaviour
 
     void Start()
     {
-        int _rows = 8;
-        int _columns = 9;
+        int _rows = 2;
+        int _columns = 3;
         Debug.Log($"[GameBoard] Creating game board with {_rows} rows and {_columns} columns.");
 
         _cellSize = (int)cellPrefab.GetComponent<RectTransform>().rect.width;
         CreateGameBoard(_rows, _columns, _cellSize + _padding);
+        popupPlayerWon.gameObject.SetActive(false);
     }
 
     private void CreateGameBoard(int rows, int columns, float gameCellSize)
@@ -134,6 +136,18 @@ public class GameBoard : MonoBehaviour
                 Debug.Log("[GameBoard] Match found!");
                 // Delete or disable matched cells
                 RemoveCells(lastChosenCellID);
+
+                // Check if all cells are matched
+                if (gameCells.Count == 0)
+                {
+                    Debug.Log("[GameBoard] All cells matched. Player won!");
+                    // Show player won popup
+                    if (popupPlayerWon != null)
+                    {
+                        popupPlayerWon.gameObject.SetActive(true);
+                        popupPlayerWon.Initialize();
+                    }
+                }
             }
             else
             {
