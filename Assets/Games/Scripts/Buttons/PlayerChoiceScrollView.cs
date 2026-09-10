@@ -5,26 +5,26 @@ public class PlayerChoiceScrollView : MonoBehaviour
     [SerializeField] private GameObject playerTogglePrefab;
     [SerializeField] private Transform contentPanel;
 
-    private ListCardSO _listCard;
+    private ListPlayerSO _listPlayer;
 
     public void CreatePlayerChoices(LobbyController lobbyController)
     {
-        if (_listCard == null)
+        if (_listPlayer == null)
         {
-            _listCard = GameManager.Instance.ListCard;
+            _listPlayer = GameManager.Instance.ListPlayer;
         }
-        
-        if (_listCard == null || _listCard.sprites == null || _listCard.sprites.Count == 0)
+
+        if (_listPlayer == null || _listPlayer.players == null || _listPlayer.players.Count == 0)
         {
-            Debug.LogError("ListCardSO is not assigned or contains no sprites.");
+            Debug.LogError("ListPlayerSO is not assigned or contains no player data.");
             return;
         }
-        for (int i = 0; i < _listCard.sprites.Count; i++)
+        for (int i = 0; i < _listPlayer.players.Count; i++)
         {
             GameObject playerItem = Instantiate(playerTogglePrefab, contentPanel);
             playerItem.name = $"PlayerItem_{i}";
             var playerItemComponent = playerItem.GetComponent<PlayerItem>();
-            playerItemComponent.Initialize(i, _listCard.sprites[i], lobbyController);
+            playerItemComponent.Initialize(i, _listPlayer.players[i].avatar, lobbyController);
         }
     }
 
