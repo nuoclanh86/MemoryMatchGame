@@ -10,8 +10,8 @@ public static class SceneNames
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private ListCardScriptableObject _listCard;
-    public ListCardScriptableObject ListCard => _listCard;
+    [SerializeField] private ListCardSO _listCard;
+    public ListCardSO ListCard => _listCard;
 
     public static GameManager Instance { get; private set; }
 

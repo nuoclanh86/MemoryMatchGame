@@ -5,7 +5,7 @@ public class PlayerChoiceScrollView : MonoBehaviour
     [SerializeField] private GameObject playerTogglePrefab;
     [SerializeField] private Transform contentPanel;
 
-    private ListCardScriptableObject _listCard;
+    private ListCardSO _listCard;
 
     public void CreatePlayerChoices(LobbyController lobbyController)
     {
@@ -16,7 +16,7 @@ public class PlayerChoiceScrollView : MonoBehaviour
         
         if (_listCard == null || _listCard.sprites == null || _listCard.sprites.Count == 0)
         {
-            Debug.LogError("ListCardScriptableObject is not assigned or contains no sprites.");
+            Debug.LogError("ListCardSO is not assigned or contains no sprites.");
             return;
         }
         for (int i = 0; i < _listCard.sprites.Count; i++)

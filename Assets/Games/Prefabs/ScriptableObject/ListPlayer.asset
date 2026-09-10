@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d371aff0192d9d24fa1bd2b2f42eb5ac, type: 3}
+  m_Name: ListPlayer
+  m_EditorClassIdentifier: Assembly-CSharp::ListPlayerSO
+  players:
+  - name: Player01
+    avatar: {fileID: 6529217171467317897, guid: abe53917bc693124190ecc9556c45856, type: 3}
+  - name: Player02
+    avatar: {fileID: -1078650932262594063, guid: 15bdb33318ebea04cbb57e6112d14544, type: 3}
+  - name: Player03
+    avatar: {fileID: 3017200703540033503, guid: 1515474225c6a2a47b929941605a7b10, type: 3}
+  - name: Player04
+    avatar: {fileID: -2339567478842473981, guid: bf238ed00dbb6d54c862bb03afc74f15, type: 3}
+  - name: Player05
+    avatar: {fileID: -2587356928650024353, guid: c61df211844f2c34782decea9c9ad11f, type: 3}
