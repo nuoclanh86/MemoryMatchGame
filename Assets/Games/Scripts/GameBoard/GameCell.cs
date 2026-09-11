@@ -8,11 +8,27 @@ public class GameCell : MonoBehaviour
 
     private Image image;
     private bool isSelected;
+    private GameBoard gameBoard;
 
     public Action<int> onCellSelected;
 
+    private void Start()
+    {
+        gameBoard = GetComponentInParent<GameBoard>();
+        if (gameBoard == null)
+        {
+            Debug.LogError("[GameCell] GameBoard not found in the scene.");
+        }
+    }
+
     public void Toggle()
     {
+        if (gameBoard.LockChoiceCells)
+        {
+            Debug.Log("[GameCell] Cell selection is locked. Ignoring selection.");
+            return;
+        }
+
         isSelected = !isSelected;
         image.color = isSelected ? Color.green : Color.white;
 
@@ -31,5 +47,11 @@ public class GameCell : MonoBehaviour
             image.sprite = sprite;
         else
             Debug.LogError("[GameCell] Image component not found on GameCell : " + this.name);
+    }
+
+    public void ResetState()
+    {
+        isSelected = false;
+        image.color = Color.white;
     }
 }

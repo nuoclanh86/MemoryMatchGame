@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class GameBoard : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class GameBoard : MonoBehaviour
     #region GameBoard Lifecycle
 
     private const int NONE_CELL_ID = -1;
+    private bool lockChoiceCells = false;
     private int lastChosenCellID = NONE_CELL_ID;
     List<GameCell> gameCells = new List<GameCell>();
+
+    public bool LockChoiceCells => lockChoiceCells;
 
     #endregion
 
@@ -152,7 +156,7 @@ public class GameBoard : MonoBehaviour
             else
             {
                 Debug.Log("[GameBoard] No match.");
-                // Handle no match logic here
+                ResetWrongChosenCells(lastChosenCellID, cellID);
             }
             lastChosenCellID = NONE_CELL_ID; // Reset for next selection
         }
@@ -163,7 +167,6 @@ public class GameBoard : MonoBehaviour
         int count = 2; // only have 2 cells with the same ID, so we can remove them both
         for (int i = gameCells.Count - 1; i >= 0; i--)
         {
-            if (count <= 0) break;
             if (gameCells[i].GameCell_ID == cellID)
             {
                 GameCell cell = gameCells[i];
@@ -171,6 +174,33 @@ public class GameBoard : MonoBehaviour
                 Destroy(cell.gameObject);
                 count--;
             }
+            if (count <= 0) break;
+        }
+    }
+
+    private async void ResetWrongChosenCells(int cellID_01, int cellID_02)
+    {
+        lockChoiceCells = true;
+        await UniTask.Delay(1000);
+        ResetWrongChosenCell(cellID_01);
+        ResetWrongChosenCell(cellID_02);
+        lockChoiceCells = false;
+    }
+
+    private void ResetWrongChosenCell(int cellID)
+    {
+        int count = 2; // only have 2 cells with the same ID
+
+        for (int i = 0; i < gameCells.Count; i++)
+        {
+            if (gameCells[i].GameCell_ID == cellID)
+            {
+                gameCells[i].ResetState();
+                count--;
+            }
+
+            if (count <= 0)
+                break;
         }
     }
 }
