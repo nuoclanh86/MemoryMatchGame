@@ -30,10 +30,12 @@ public class LobbyController : MonoBehaviour
                 itemTransform.IsChildOf(_playerChoiceScroll.transform))
         {
             MoveItem(itemTransform, _playerChoicePreview.GetPlayerPreviewContentTransform());
+            GameManager.Instance.SelectedPlayerIndices.Add(item.PlayerIndex);
         }
         else if (itemTransform.IsChildOf(_playerChoicePreview.transform))
         {
             MoveItem(itemTransform, _playerChoiceScroll.GetContentPanelTransform());
+            GameManager.Instance.SelectedPlayerIndices.Remove(item.PlayerIndex);
         }
         _playerChoicePreview.UpdatePlayerSumupText();
     }

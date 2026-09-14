@@ -23,6 +23,18 @@ public class PlayerItem : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    private void Start()
+    {
+        //check if the player index is in the selected list, if so, call OnPlayerChoiceItemClicked to move it to the preview
+        if (_playerIndex >= 0 && GameManager.Instance.SelectedPlayerIndices.Contains(_playerIndex))
+        {
+            if (_lobbyController != null)
+            {
+                _lobbyController.OnPlayerChoiceItemClicked(this);
+            }
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (_lobbyController != null)

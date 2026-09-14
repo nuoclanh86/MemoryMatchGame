@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public int PlayerCount { get; private set; } = 2;
+
+    private List<int> _selectedPlayerIndices = new List<int>();
+    public List<int> SelectedPlayerIndices => _selectedPlayerIndices;
 
     private void Awake()
     {
