@@ -37,6 +37,7 @@ public class LobbyController : MonoBehaviour
         {
             MoveItemToScroll(itemTransform, _playerChoiceScroll.GetContentPanelTransform());
             GameManager.Instance.SelectedPlayerIndices.Remove(item.PlayerIndex);
+            _playerChoicePreview.ReArangePlayerPreviewItems();
         }
         _playerChoicePreview.UpdatePlayerSumupText();
     }

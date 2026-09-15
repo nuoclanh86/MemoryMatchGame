@@ -31,5 +31,43 @@ public class PlayerChoicePreview : MonoBehaviour
     {
         return playerPreviewContent.GetComponentsInChildren<PlayerItem>(true).Length;
     }
+
+    public void ReArangePlayerPreviewItems()
+    {
+        Transform[] slots = new Transform[4];
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i] = playerPreviewContent.transform.GetChild(i);
+        }
+
+        int targetSlotIndex = 0;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            Transform sourceSlot = slots[i];
+
+            if (sourceSlot.childCount == 0)
+                continue;
+
+            Transform playerItem = sourceSlot.GetChild(0);
+
+            if (sourceSlot == slots[targetSlotIndex])
+            {
+                targetSlotIndex++;
+                continue;
+            }
+
+            playerItem.SetParent(slots[targetSlotIndex], false);
+
+            RectTransform rect = playerItem.GetComponent<RectTransform>();
+            if (rect != null)
+            {
+                rect.anchoredPosition = Vector2.zero;
+            }
+
+            targetSlotIndex++;
+        }
+    }
 }
 
