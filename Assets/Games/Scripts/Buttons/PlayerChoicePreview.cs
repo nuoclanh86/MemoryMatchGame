@@ -29,7 +29,7 @@ public class PlayerChoicePreview : MonoBehaviour
 
     public int GetPlayerCount()
     {
-        return playerPreviewContent.childCount;
+        return playerPreviewContent.GetComponentsInChildren<PlayerItem>(true).Length;
     }
 }
 
