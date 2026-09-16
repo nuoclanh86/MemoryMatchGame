@@ -7,6 +7,7 @@ public class GameBoard : MonoBehaviour
     #region GameBoard Configuration
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private PopupPlayerWon popupPlayerWon;
+    [SerializeField] private List<GameObject> listPlayerPositions;
 
     private int _padding = 5;
     private int _cellSize = -1;
@@ -25,13 +26,24 @@ public class GameBoard : MonoBehaviour
 
     void Start()
     {
-        int _rows = 2;
-        int _columns = 3;
-        Debug.Log($"[GameBoard] Creating game board with {_rows} rows and {_columns} columns.");
-
         _cellSize = (int)cellPrefab.GetComponent<RectTransform>().rect.width;
-        CreateGameBoard(_rows, _columns, _cellSize + _padding);
+
+        InitGameBoard(4, 6);
+    }
+
+    private void InitGameBoard(int rows, int columns)
+    {
+        Debug.Log($"[GameBoard] Creating game board with {rows} rows and {columns} columns.");
+        CreateGameBoard(rows, columns, _cellSize + _padding);
+
         popupPlayerWon.gameObject.SetActive(false);
+        if (listPlayerPositions.Count > 0)
+        {
+            foreach (var playerPos in listPlayerPositions)
+            {
+                playerPos.SetActive(false);
+            }
+        }
     }
 
     private void CreateGameBoard(int rows, int columns, float gameCellSize)
