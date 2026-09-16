@@ -11,6 +11,7 @@ public class GameBoard : MonoBehaviour
 
     private int _padding = 5;
     private int _cellSize = -1;
+    private float _cellSizeScaleRate = 2.5f;
     #endregion
 
     #region GameBoard Lifecycle
@@ -26,7 +27,7 @@ public class GameBoard : MonoBehaviour
 
     void Start()
     {
-        _cellSize = (int)cellPrefab.GetComponent<RectTransform>().rect.width;
+        _cellSize = (int)(cellPrefab.GetComponent<RectTransform>().rect.width * _cellSizeScaleRate);
 
         InitGameBoard(2, 2);
     }
@@ -117,6 +118,7 @@ public class GameBoard : MonoBehaviour
             GameObject cell = Instantiate(cellPrefab, transform);
             cell.name = $"Cell_{i}";
             cell.transform.localPosition = positions[i];
+            cell.transform.localScale = Vector3.one * _cellSizeScaleRate;
             int cellID = ids[i];
             Sprite sprite = sprites[cellID];
             GameCell gameCell = cell.GetComponent<GameCell>();
