@@ -29,7 +29,26 @@ public class GameBoard : MonoBehaviour
     {
         _cellSize = (int)(cellPrefab.GetComponent<RectTransform>().rect.width * _cellSizeScaleRate);
 
+        InitPlayersInfo();
         InitGameBoard(2, 2);
+    }
+
+    private void InitPlayersInfo()
+    {
+        int playerCount = GameManager.Instance.PlayerCount;
+
+        for (int i = 0; i < listPlayerPositions.Count; i++)
+        {
+            if (i < playerCount)
+            {
+                listPlayerPositions[i].SetActive(true);
+                listPlayerPositions[i].GetComponent<PlayerInfoOnBoard>().Initialize(i + 1);
+            }
+            else
+            {
+                listPlayerPositions[i].SetActive(false);
+            }
+        }
     }
 
     private void InitGameBoard(int rows, int columns)
@@ -38,13 +57,6 @@ public class GameBoard : MonoBehaviour
         CreateGameBoard(rows, columns, _cellSize + _padding);
 
         popupPlayerWon.gameObject.SetActive(false);
-        if (listPlayerPositions.Count > 0)
-        {
-            foreach (var playerPos in listPlayerPositions)
-            {
-                playerPos.SetActive(false);
-            }
-        }
     }
 
     private void CreateGameBoard(int rows, int columns, float gameCellSize)
@@ -164,6 +176,7 @@ public class GameBoard : MonoBehaviour
                     {
                         popupPlayerWon.gameObject.SetActive(true);
                         popupPlayerWon.Initialize();
+                        this.gameObject.SetActive(false);
                     }
                 }
             }
