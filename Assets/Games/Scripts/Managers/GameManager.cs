@@ -22,8 +22,9 @@ public class GameManager : MonoBehaviour
 
     public int PlayerCount { get; private set; } = 2;
 
-    private List<int> _selectedPlayerIndices = new List<int>();
-    public List<int> SelectedPlayerIndices => _selectedPlayerIndices;
+    private List<(int playerIndex, int selectedIndex)> _selectedPlayerIndices = new List<(int playerIndex, int selectedIndex)>();
+
+    public List<(int playerIndex, int selectedIndex)> SelectedPlayerIndices => _selectedPlayerIndices;
 
     private void Awake()
     {

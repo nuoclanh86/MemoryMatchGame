@@ -28,7 +28,7 @@ public class GameBoard : MonoBehaviour
     {
         _cellSize = (int)cellPrefab.GetComponent<RectTransform>().rect.width;
 
-        InitGameBoard(4, 6);
+        InitGameBoard(2, 2);
     }
 
     private void InitGameBoard(int rows, int columns)

@@ -29,24 +29,26 @@ public class LobbyController : MonoBehaviour
         if (_playerChoicePreview?.GetPlayerCount() < maxPlayers &&
                 itemTransform.IsChildOf(_playerChoiceScroll.transform))
         {
-            bool moveResult = MoveItemToPreview(itemTransform, _playerChoicePreview.GetPlayerPreviewContentTransform());
+            GameManager.Instance.SelectedPlayerIndices.Add((item.PlayerIndex, 0));
+            bool moveResult = MoveItemToPreview(itemTransform);
             Debug.Log($"[LobbyController] Move item {item.PlayerIndex} to preview: {moveResult} , player count: {_playerChoicePreview.GetPlayerCount()}");
-            GameManager.Instance.SelectedPlayerIndices.Add(item.PlayerIndex);
         }
         else if (itemTransform.IsChildOf(_playerChoicePreview.transform))
         {
-            MoveItemToScroll(itemTransform, _playerChoiceScroll.GetContentPanelTransform());
-            GameManager.Instance.SelectedPlayerIndices.Remove(item.PlayerIndex);
+            GameManager.Instance.SelectedPlayerIndices.RemoveAll(x => x.playerIndex == item.PlayerIndex);
+            MoveItemToScroll(itemTransform);
             _playerChoicePreview.ReArangePlayerPreviewItems();
         }
         _playerChoicePreview.UpdatePlayerSumupText();
+        UpdatePlayerPreviewIndices();
     }
 
-    private bool MoveItemToPreview(Transform item, Transform newParent)
+    public bool MoveItemToPreview(Transform item)
     {
-        if (item == null || newParent == null)
+        if (item == null)
             return false;
 
+        Transform newParent = _playerChoicePreview.GetPlayerPreviewContentTransform();
         Transform targetParent = null;
 
         // Tìm child đầu tiên không có child
@@ -80,13 +82,47 @@ public class LobbyController : MonoBehaviour
         return true;
     }
 
-    private void MoveItemToScroll(Transform item, Transform newParent)
+    private void MoveItemToScroll(Transform item)
     {
-        item.SetParent(newParent, false);
+        item.SetParent(_playerChoiceScroll.GetContentPanelTransform(), false);
+    }
+
+    private void UpdatePlayerPreviewIndices()
+    {
+        Transform parent = _playerChoicePreview.GetPlayerPreviewContentTransform();
+
+        if (parent == null)
+            return;
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+
+            if (child.childCount == 0)
+                break;
+
+            PlayerItem playerItem = child.GetComponentInChildren<PlayerItem>();
+
+            if (playerItem != null)
+            {
+                UpdateSelectedPlayerIndex(playerItem.PlayerIndex, i + 1);
+            }
+        }
+    }
+    private void UpdateSelectedPlayerIndex(int playerIndex, int selectedIndex)
+    {
+        int index = GameManager.Instance.SelectedPlayerIndices.FindIndex(
+            x => x.playerIndex == playerIndex);
+
+        if (index >= 0)
+        {
+            GameManager.Instance.SelectedPlayerIndices[index] = (playerIndex, selectedIndex);
+        }
     }
 
     private void OnStartGameButtonClicked()
     {
         GameManager.Instance.StartGame(_playerChoicePreview?.GetPlayerCount() ?? 0);
     }
+
 }
