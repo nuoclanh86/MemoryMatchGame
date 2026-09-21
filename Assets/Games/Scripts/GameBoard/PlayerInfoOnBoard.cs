@@ -36,11 +36,11 @@ public class PlayerInfoOnBoard : MonoBehaviour
     {
         playerName.text = GameManager.Instance.ListPlayer.players[playerIndex].name;
     }
-    private void SetPlayerScore(int numberScore)
+    public void SetPlayerScore(int numberScore)
     {
         playerScore.text = string.Format(playerScoreFormat, numberScore);
     }
-    private void SetPlayerTurn(bool isPlayerTurn)
+    public void SetPlayerTurn(bool isPlayerTurn)
     {
         vfxPlayerTurn.SetActive(isPlayerTurn);
     }

@@ -65,6 +65,7 @@ MonoBehaviour:
   avatarImage: {fileID: 6009601430409602527}
   playerName: {fileID: 1579203942647074511}
   playerScore: {fileID: 6670096774958022712}
+  vfxPlayerTurn: {fileID: 2983178513285445274}
 --- !u!1 &3282893112053513328
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +587,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2710acd5a918878418c66ead30389f2e, type: 3}
+--- !u!1 &2983178513285445274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3031418010665174700, guid: 2710acd5a918878418c66ead30389f2e, type: 3}
+  m_PrefabInstance: {fileID: 249848160302641206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7945446922530017404 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7868991908347961418, guid: 2710acd5a918878418c66ead30389f2e, type: 3}

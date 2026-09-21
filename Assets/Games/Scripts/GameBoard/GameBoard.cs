@@ -7,7 +7,9 @@ public class GameBoard : MonoBehaviour
     #region GameBoard Configuration
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private PopupPlayerWon popupPlayerWon;
-    [SerializeField] private List<GameObject> listPlayerPositions;
+    [SerializeField] private List<PlayerInfoOnBoard> listPlayerPositions;
+
+    private MemoryMatchTurnManager _turnManager;
 
     private int _padding = 5;
     private int _cellSize = -1;
@@ -36,17 +38,22 @@ public class GameBoard : MonoBehaviour
     private void InitPlayersInfo()
     {
         int playerCount = GameManager.Instance.PlayerCount;
+        _turnManager = new MemoryMatchTurnManager(playerCount);
+        _turnManager.OnTurnChanged += OnTurnChanged;
+        _turnManager.OnScoreChanged += OnScoreChanged;
+
+        _turnManager.StartGame();
 
         for (int i = 0; i < listPlayerPositions.Count; i++)
         {
             if (i < playerCount)
             {
-                listPlayerPositions[i].SetActive(true);
-                listPlayerPositions[i].GetComponent<PlayerInfoOnBoard>().Initialize(i + 1);
+                listPlayerPositions[i].gameObject.SetActive(true);
+                listPlayerPositions[i].GetComponent<PlayerInfoOnBoard>().Initialize(i);
             }
             else
             {
-                listPlayerPositions[i].SetActive(false);
+                listPlayerPositions[i].gameObject.SetActive(false);
             }
         }
     }
@@ -229,5 +236,17 @@ public class GameBoard : MonoBehaviour
             if (count <= 0)
                 break;
         }
+    }
+
+    private void OnTurnChanged(int playerIndex, bool isPlayerTurn)
+    {
+        // Update player turn UI
+        listPlayerPositions[playerIndex].SetPlayerTurn(isPlayerTurn);
+    }
+
+    private void OnScoreChanged(int playerIndex, int score)
+    {
+        // Update player score UI
+        listPlayerPositions[playerIndex].SetPlayerScore(score);
     }
 }
