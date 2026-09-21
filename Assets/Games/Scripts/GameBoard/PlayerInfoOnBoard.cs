@@ -7,6 +7,8 @@ public class PlayerInfoOnBoard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerName;
     [SerializeField] private TextMeshProUGUI playerScore;
 
+    [SerializeField] private GameObject vfxPlayerTurn;
+
     private string playerScoreFormat = "Score: {0}";
 
     public void Initialize(int playerNumber)
@@ -18,6 +20,7 @@ public class PlayerInfoOnBoard : MonoBehaviour
             LoadAvatar(playerIndex);
             LoadPlayerName(playerIndex);
             SetPlayerScore(0);
+            SetPlayerTurn(false);
         }
         else
         {
@@ -36,5 +39,9 @@ public class PlayerInfoOnBoard : MonoBehaviour
     private void SetPlayerScore(int numberScore)
     {
         playerScore.text = string.Format(playerScoreFormat, numberScore);
+    }
+    private void SetPlayerTurn(bool isPlayerTurn)
+    {
+        vfxPlayerTurn.SetActive(isPlayerTurn);
     }
 }
