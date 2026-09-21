@@ -42,20 +42,20 @@ public class GameBoard : MonoBehaviour
         _turnManager.OnTurnChanged += OnTurnChanged;
         _turnManager.OnScoreChanged += OnScoreChanged;
 
-        _turnManager.StartGame();
-
         for (int i = 0; i < listPlayerPositions.Count; i++)
         {
             if (i < playerCount)
             {
                 listPlayerPositions[i].gameObject.SetActive(true);
-                listPlayerPositions[i].GetComponent<PlayerInfoOnBoard>().Initialize(i);
+                listPlayerPositions[i].Initialize(i);
             }
             else
             {
                 listPlayerPositions[i].gameObject.SetActive(false);
             }
         }
+
+        _turnManager.StartGame();
     }
 
     private void InitGameBoard(int rows, int columns)

@@ -105,7 +105,7 @@ public class LobbyController : MonoBehaviour
 
             if (playerItem != null)
             {
-                UpdateSelectedPlayerIndex(playerItem.PlayerIndex, i + 1);
+                UpdateSelectedPlayerIndex(playerItem.PlayerIndex, i);
             }
         }
     }

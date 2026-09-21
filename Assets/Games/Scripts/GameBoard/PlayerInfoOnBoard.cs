@@ -13,8 +13,10 @@ public class PlayerInfoOnBoard : MonoBehaviour
 
     public void Initialize(int playerNumber)
     {
-        var player = GameManager.Instance.SelectedPlayerIndices.Find(x => x.selectedIndex == playerNumber);
-        int playerIndex = player == default ? -1 : player.playerIndex;
+        var list = GameManager.Instance.SelectedPlayerIndices;
+        int index = list.FindIndex(x => x.selectedIndex == playerNumber);
+        int playerIndex = index >= 0 ? list[index].playerIndex : -1;
+
         if (playerIndex != -1)
         {
             LoadAvatar(playerIndex);
