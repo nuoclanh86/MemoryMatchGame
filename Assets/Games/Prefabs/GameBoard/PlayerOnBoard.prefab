@@ -66,6 +66,7 @@ MonoBehaviour:
   playerName: {fileID: 1579203942647074511}
   playerScore: {fileID: 6670096774958022712}
   vfxPlayerTurn: {fileID: 2983178513285445274}
+  backgroundImage: {fileID: 5861731264471445482}
 --- !u!1 &3282893112053513328
 GameObject:
   m_ObjectHideFlags: 0

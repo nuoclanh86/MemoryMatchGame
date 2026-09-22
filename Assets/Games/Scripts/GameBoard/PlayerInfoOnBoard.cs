@@ -8,6 +8,7 @@ public class PlayerInfoOnBoard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerScore;
 
     [SerializeField] private GameObject vfxPlayerTurn;
+    [SerializeField] private GameObject backgroundImage;
 
     private PlayerData _playerData = new();
     public PlayerData GetPlayerData() => _playerData;
@@ -46,5 +47,6 @@ public class PlayerInfoOnBoard : MonoBehaviour
     public void SetPlayerTurn(bool isPlayerTurn)
     {
         vfxPlayerTurn.SetActive(isPlayerTurn);
+        backgroundImage.SetActive(!isPlayerTurn);
     }
 }
