@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ListCardSO _listCard;
 
 
-    public ListPlayerSO ListPlayer => _listPlayer;
+    // public ListPlayerSO ListPlayer => _listPlayer;
     public ListCardSO ListCard => _listCard;
 
     public static GameManager Instance { get; private set; }
@@ -63,5 +63,20 @@ public class GameManager : MonoBehaviour
         {
             SceneLoader.Instance.LoadLobby();
         }
+    }
+
+    public PlayerData GetPlayerData(int playerIndex)
+    {
+        if (playerIndex < 0 || playerIndex >= _listPlayer.players.Count)
+        {
+            Debug.LogError($"[GameManager] Invalid player index: {playerIndex}");
+            return null;
+        }
+        return _listPlayer.players[playerIndex];
+    }
+
+    public int GetTotalPlayers()
+    {
+        return _listPlayer.players.Count;
     }
 }

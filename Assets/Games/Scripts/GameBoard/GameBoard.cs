@@ -173,24 +173,16 @@ public class GameBoard : MonoBehaviour
                 Debug.Log("[GameBoard] Match found!");
                 // Delete or disable matched cells
                 RemoveCells(lastChosenCellID);
+                _turnManager.OnMatchResult(true); // Add score to current player
 
                 // Check if all cells are matched
-                if (gameCells.Count == 0)
-                {
-                    Debug.Log("[GameBoard] All cells matched. Player won!");
-                    // Show player won popup
-                    if (popupPlayerWon != null)
-                    {
-                        popupPlayerWon.gameObject.SetActive(true);
-                        popupPlayerWon.Initialize();
-                        this.gameObject.SetActive(false);
-                    }
-                }
+                CheckAllCellsMatched();
             }
             else
             {
                 Debug.Log("[GameBoard] No match.");
                 ResetWrongChosenCells(lastChosenCellID, cellID);
+                _turnManager.OnMatchResult(false); // Switch to next player
             }
             lastChosenCellID = NONE_CELL_ID; // Reset for next selection
         }
@@ -209,6 +201,27 @@ public class GameBoard : MonoBehaviour
                 count--;
             }
             if (count <= 0) break;
+        }
+    }
+
+    private async void CheckAllCellsMatched()
+    {
+        await UniTask.Delay(1000); // Wait for a short delay to ensure all cells are processed
+        if (gameCells.Count == 0)
+        {
+            Debug.Log("[GameBoard] All cells matched. Player won!");
+            // Show player won popup
+            if (popupPlayerWon != null)
+            {
+                popupPlayerWon.gameObject.SetActive(true);
+
+                PlayerData playerData = listPlayerPositions[_turnManager.CurrentPlayerIndex].GetPlayerData();
+                string playerName = playerData != null ? playerData.name : "Null";
+                int playerScore = _turnManager.GetScore(_turnManager.CurrentPlayerIndex);
+
+                popupPlayerWon.Initialize(playerName, playerScore);
+                this.gameObject.SetActive(false);
+            }
         }
     }
 

@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PopupPlayerWon : MonoBehaviour
 {
+    [SerializeField] private TMPro.TextMeshProUGUI playerWonText;
 
-    public void Initialize()
+    public void Initialize(string playerName, int playerScore)
     {
-        // Initialize the popup if needed
+        playerWonText.text = $"Player {playerName} won the game with a score of {playerScore}!";
     }
 
     public void OnPlayAgainButtonClicked()

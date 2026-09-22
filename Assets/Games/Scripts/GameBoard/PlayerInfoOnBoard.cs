@@ -9,6 +9,8 @@ public class PlayerInfoOnBoard : MonoBehaviour
 
     [SerializeField] private GameObject vfxPlayerTurn;
 
+    private PlayerData _playerData = new();
+    public PlayerData GetPlayerData() => _playerData;
     private string playerScoreFormat = "Score: {0}";
 
     public void Initialize(int playerNumber)
@@ -19,10 +21,8 @@ public class PlayerInfoOnBoard : MonoBehaviour
 
         if (playerIndex != -1)
         {
-            LoadAvatar(playerIndex);
-            LoadPlayerName(playerIndex);
-            SetPlayerScore(0);
-            SetPlayerTurn(false);
+            _playerData = GameManager.Instance.GetPlayerData(playerIndex);
+            InitializePlayerData();
         }
         else
         {
@@ -30,18 +30,19 @@ public class PlayerInfoOnBoard : MonoBehaviour
         }
     }
 
-    private void LoadAvatar(int playerIndex)
+    private void InitializePlayerData()
     {
-        avatarImage.sprite = GameManager.Instance.ListPlayer.players[playerIndex].avatar;
+        avatarImage.sprite = _playerData.avatar;
+        playerName.text = _playerData.name ?? "Null";
+        SetPlayerScore(0);
+        SetPlayerTurn(false);
     }
-    private void LoadPlayerName(int playerIndex)
-    {
-        playerName.text = GameManager.Instance.ListPlayer.players[playerIndex].name;
-    }
+
     public void SetPlayerScore(int numberScore)
     {
         playerScore.text = string.Format(playerScoreFormat, numberScore);
     }
+
     public void SetPlayerTurn(bool isPlayerTurn)
     {
         vfxPlayerTurn.SetActive(isPlayerTurn);
