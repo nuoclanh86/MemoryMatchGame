@@ -32,7 +32,7 @@ public class GameBoard : MonoBehaviour
         _cellSize = (int)(cellPrefab.GetComponent<RectTransform>().rect.width * _cellSizeScaleRate);
 
         InitPlayersInfo();
-        InitGameBoard(2, 2);
+        InitGameBoard(2, 3);
     }
 
     private void InitPlayersInfo()
