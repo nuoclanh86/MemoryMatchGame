@@ -188,8 +188,9 @@ public class GameBoard : MonoBehaviour
         }
     }
 
-    private void RemoveCells(int cellID)
+    private async void RemoveCells(int cellID)
     {
+        await UniTask.Delay(1000); // Wait for a short delay to ensure all cells are processed
         int count = 2; // only have 2 cells with the same ID, so we can remove them both
         for (int i = gameCells.Count - 1; i >= 0; i--)
         {
