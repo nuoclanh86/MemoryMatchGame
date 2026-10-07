@@ -140,7 +140,7 @@ public class GameBoard : MonoBehaviour
             cell.transform.localScale = Vector3.one * _cellSizeScaleRate;
             int cellID = ids[i];
             Sprite sprite = sprites[cellID];
-            GameCell gameCell = cell.GetComponent<GameCell>();
+            GameCell gameCell = cell.GetComponentInChildren<GameCell>();
             gameCell.InitializeCell(cellID, sprite, OnCellSelected);
             gameCells.Add(gameCell);
         }
